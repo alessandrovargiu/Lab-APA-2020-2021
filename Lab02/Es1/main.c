@@ -9,7 +9,7 @@ int base(int mat[][dim], int nc, int i, int j);
 int altezza(int mat[][dim], int nr, int i, int j);
 void save_region(Regione *reg, int i, int j, int b, int h, int a);
 int main() {
-    setbuf(stdout, NULL);
+    setbuf(stdout, NULL);               //usato per risolvere un bug in Clion, dove in fase di debug non mostra nessun output nel terminale
     int mat[dim][dim], nr, nc;
     FILE *fp;
     char nomefile[10] = "mappa.txt";
@@ -26,8 +26,9 @@ int main() {
     scan_matrice(mat, nr, nc);
     return 0;
 }
-void scan_matrice(int mat[][dim], int nr, int nc){
-    int i,j, bmax=0, hmax=0, amax=0;
+
+void scan_matrice(int mat[][dim], int nr, int nc){   //si potrebbe ottimizzare, impedendo di eseguire il calcolo di base e altezza quando non sono
+    int i,j, bmax=0, hmax=0, amax=0;                    //in un estremo superiore sinistro, verrà fatto in un esercizio successivo di un laboratorio
     int b, a, h;
     Regione reg[3];
     for(i=0; i<nr; i++){
@@ -56,7 +57,7 @@ void scan_matrice(int mat[][dim], int nr, int nc){
     printf("Regione con l'altezza maggiore e_sx:(x,y) : (%d, %d) b = %d h = %d, a = %d\n", reg[1].x, reg[1].y, reg[1].base, reg[1].altezza, reg[1].area);
     printf("Regione con l'area maggiore e_sx:(x,y) : (%d, %d) b = %d h = %d, a = %d\n", reg[2].x, reg[2].y, reg[2].base, reg[2].altezza, reg[2].area);
 }
-int base(int mat[][dim], int nc, int i, int j){
+int base(int mat[][dim], int nc, int i, int j){     //calcola la base di un rettangolo nella matrice
     int b=0;
     while(j<nc && mat[i][j]) {
         j++;
@@ -64,7 +65,7 @@ int base(int mat[][dim], int nc, int i, int j){
     }
     return b;
 }
-int altezza(int mat[][dim], int nr, int i, int j){
+int altezza(int mat[][dim], int nr, int i, int j){      //altezza di un rettangolo nella matrice
     int h=0;
     while(i<nr && mat[i][j]){
         i++;
@@ -72,7 +73,7 @@ int altezza(int mat[][dim], int nr, int i, int j){
     }
     return h;
 }
-void save_region(Regione *reg, int i, int j, int b, int h, int a){
+void save_region(Regione *reg, int i, int j, int b, int h, int a){ 
     reg->x = i;
     reg->y = j;
     reg->base = b;
