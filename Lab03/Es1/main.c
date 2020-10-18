@@ -33,10 +33,11 @@ void leggiMatrice(int M[][dim], int *nr, int *nc){
     }
     fclose(fp);
 }
-bool riconosciRegione(int mat[][dim], int nr, int nc, int r, int c, int *b, int *h){
-
+bool riconosciRegione(int mat[][dim], int nr, int nc, int r, int c, int *b, int *h){ 
+    //esamino i vari casi nei quali posso trovarmi a un estremo superiore sinistro di una regione, in questo caso, calcolo base
+    //e altezza passati tramite puntatori
     if(r != 0 && c!=0){
-        if(mat[r-1][c]==0 && mat[r][c-1] == 0){
+        if(mat[r-1][c]==0 && mat[r][c-1] == 0){             
             *b = base(mat, nc, r, c);
             *h = altezza(mat, nr, r, c);
             return true;
@@ -69,6 +70,7 @@ void scanMatrice(int mat[][dim], int nr, int nc){
 
     for(i=0; i<nr; i++){
         for(j=0;j<nc; j++){
+            //doppio controllo, grazie alla prima condizione evito tutti i controlli non necessari della f. riconosciRegione
             if(mat[i][j] && riconosciRegione(mat, nr, nc, i, j, &b, &h)){
                 a = b*h;
                 if(b > bmax){
@@ -92,7 +94,7 @@ void scanMatrice(int mat[][dim], int nr, int nc){
     printf("Regione con l'area maggiore e_sx:(x,y) : (%d, %d) b = %d h = %d, a = %d\n", reg[2].x, reg[2].y, reg[2].base, reg[2].altezza, reg[2].area);
 }
 int base(int mat[][dim], int nc, int i, int j){
-    int b=0;
+    int b=0;    
     while(j<nc && mat[i][j]) {
         j++;
         b++;
