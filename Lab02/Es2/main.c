@@ -25,7 +25,7 @@ int main() {
     fscanf(fp, "%d", &nr);
 
     for(int i=0; i<nr; i++){
-        fscanf(fp, "%s %s %s %s %s %s %d", v[i].cod_t, v[i].p, v[i].a, v[i].data,v[i].ora_p, v[i].ora_a, &v[i].ritardo);;
+        fscanf(fp, "%s %s %s %s %s %s %d", v[i].cod_t, v[i].p, v[i].a, v[i].data,v[i].ora_p, v[i].ora_a, &v[i].ritardo);
     }
     fclose(fp);
     while(1){
@@ -37,6 +37,7 @@ int main() {
 }
 void partenza_data(Tratta v[], int nr){
     char data1[11], data2[11];
+    
     printf("Inserisci un intervallo di date (yyyy/mm/gg): \n data1: ");
     scanf("%s", data1);
     printf("\ndata2: ");
@@ -58,7 +59,7 @@ void check_partenza(Tratta v[], int nr){
         }
     }
 }
-void check_capolinea(Tratta v[], int nr){
+void check_capolinea(Tratta v[], int nr){      
     char c[maxstr];
     printf("Inserisci una fermata: ");
     scanf("%s", c);
@@ -69,7 +70,7 @@ void check_capolinea(Tratta v[], int nr){
         }
     }
 }
-void check_ritardo(Tratta v[], int nr){
+void check_ritardo(Tratta v[], int nr){     //stampa delle corse che hanno effettuato ritardo tra due date fornite da tastiera
     char data1[11], data2[11];
     printf("Inserisci un intervallo di date (gg/mm/yyyy): \n data1: ");
     scanf("%s", data1);
@@ -81,9 +82,10 @@ void check_ritardo(Tratta v[], int nr){
         }
     }
 }
-void check_ritardotot(Tratta v[], int nr){
+void check_ritardotot(Tratta v[], int nr){          //somma dei vari ritardi di una tratta, identificata da un codice
     char codt[maxstr];
     int ritardo = 0;
+    
     printf("Inserisci il codice di una tratta: ");
     scanf("%s", codt);
     for(size_t i=0; i<nr; i++){
@@ -92,7 +94,7 @@ void check_ritardotot(Tratta v[], int nr){
     }
     printf("\n Ritardo totale accumulato dalla tratta %s : %d \n", codt, ritardo);
 }
-void selezioneDati(command c, Tratta v[], int nr){
+void selezioneDati(command c, Tratta v[], int nr){      //menu' a scelta con switch
     switch(c){
         case r_date:
             partenza_data(v, nr);
@@ -112,7 +114,7 @@ void selezioneDati(command c, Tratta v[], int nr){
         default: printf("comando errato");
     }
 }
-int checkdata(char data1[], char data2[], char data[]) {        //controlla se una data è compresa tra un intervallo dato a priori
+int checkdata(char data1[], char data2[], char data[]) {        //controlla se una data è compresa tra un intervallo passato alla funzione
     int gg1, gg2, gg, mm1, mm2, mm, aa1, aa2, aa;
     sscanf(data1, "%d/%d/%d", &gg1, &mm1, &aa1);
     sscanf(data2, "%d/%d/%d", &gg2, &mm2, &aa2);
@@ -126,7 +128,7 @@ int checkdata(char data1[], char data2[], char data[]) {        //controlla se u
     }
     return 0;
 }
-command leggiComando(){
+command leggiComando(){         //traduce un comando stringa nel rispettivo enum 
     command c;
     char *tabella[r_fine+1] = {
             "date", "partenza", "capolinea", "ritardo", "ritardo_tot", "fine"
@@ -141,7 +143,7 @@ command leggiComando(){
         c++;
     return c;
 }
-void strToLower(char s[]){
+void strToLower(char s[]){      //conversione maiusc --> minusc
     for(int i=0; s[i]!='\0'; i++)
         s[i] = tolower(s[i]);
 }
