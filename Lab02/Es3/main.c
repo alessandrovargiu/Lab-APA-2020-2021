@@ -4,7 +4,7 @@
 #define word_l 25
 void row_scan(char seq[]);
 void strToLower(char s[]);
-int main() {
+int main() {                                // ci sono ancora piccoli errori nel codice, li correggero' appena posso
     setbuf(stdout, NULL);
     FILE *fps;
     int ns;
