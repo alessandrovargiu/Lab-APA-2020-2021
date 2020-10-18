@@ -12,12 +12,15 @@ int main() {
     int nr, nc, mat[maxdim][maxdim], indice, pos;
     char str[100];
     char selettore[10], direzione[10];
+    
     /* printf("Inserire il nome del file (max 20 caratteri): ");
     scanf("%s", nomefile);
     if(strlen(nomefile) > 20) {
         printf("Nome file troppo lungo. ");
         return -1;
-    }                   */
+    }    
+    */
+    
     fp = fopen("mat.txt", "r");
     fscanf(fp, "%d %d\n", &nr, &nc);
     for(size_t i=0; i<nr; i++) {
@@ -26,6 +29,7 @@ int main() {
         }
     }
     fclose(fp);
+    
     printf("\nInserisci (max 100 caratteri) <selettore> <indice> <direzione> <posizioni> : ");
     while (1) {
         scanf("%s", selettore);
@@ -65,7 +69,7 @@ void ruotamatrice(int mat[][maxdim], int nr, int nc, int indice, int pos, char s
     }
 
 }
-void ruota_opt(int v[maxdim], int N, int P, int dir) {
+void ruota_opt(int v[maxdim], int N, int P, int dir) {      //algoritmo O(n) ottimizzato per la rotazione di vettori
     int tmpv[maxdim], i;
 
     if(dir == 1) P=N-P;    // P spostamenti a DX = N-P spostamenti a SX
