@@ -19,7 +19,7 @@ int main() {
 
     return 0;
 }
-void ruota(int v[maxN], int N, int P, int dir) {
+void ruota(int v[maxN], int N, int P, int dir) {        //algoritmo non proprio efficiente, nei prossimi esercizi di rotazione ottimizzo a O(n)
     int tmp, i, j;
 
     if (dir == -1){
