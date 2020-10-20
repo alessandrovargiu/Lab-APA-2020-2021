@@ -20,7 +20,7 @@ int gcd(int a, int b){
         a = b;
         b = tmp;
     }
-    //Euclide: l'mcd di a e b&a è lo stesso di a e b
+    //Euclide: l'mcd di a e b%a è lo stesso di a e b
     if(a == b || b == 0) return a;
 
     if( (a%2 == 0) && (b%2 == 0) ){      //se a,b sono pari
