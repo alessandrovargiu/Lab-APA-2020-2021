@@ -12,7 +12,7 @@ int main() {
     printf("Elemento maggioritario (-1 se non esiste) : %d", majority(v));
     return 0;
 }
-int majority(int *v) {
+int majority(int *v) {      // wrapper
     int l=0, r=N-1;
     return majorityR(v,l,r);
 }
