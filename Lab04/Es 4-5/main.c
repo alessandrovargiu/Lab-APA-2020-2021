@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define maxstr 30
+#define maxstr 30                       // Manca ancora la parte di ricerca
 typedef enum command {
     c_stampa, o_data, o_tratta, o_partenza, o_arrivo, r_partenza, c_fine
 } command;
