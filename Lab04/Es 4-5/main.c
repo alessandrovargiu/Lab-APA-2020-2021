@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define maxstr 30                       
+#define maxstr 30
 typedef enum command {
     c_stampa, o_data, o_tratta, o_partenza, o_arrivo, r_partenza, c_fine
 } command;
@@ -89,7 +89,7 @@ void MergeSort(Tratta *A, int N, tipo_ord ordine) {
         printf("Memory allocation error\n");
         exit(1);
     }
-    MergeSortR(A, B, l, r, ordine);
+    MergeSortR(A, B, l, r, ordine);         // O(nlogn)
     free(B);
 }
 void ordina(Tratta v[], int nr){          //funzione wrapper chiamata all'inizio del programma per creare tutti gli ordinamenti richiesti
@@ -104,6 +104,22 @@ void ordina(Tratta v[], int nr){          //funzione wrapper chiamata all'inizio
     MergeSort(ordinamenti[2], nr, 2);
     MergeSort(ordinamenti[3], nr, 3);
 
+}
+void BinSearch(Tratta v[], int l, int r, char k[]) {   // O(log n)
+    int m;
+
+    while(l<=r) {
+        m = (l+r)/2;
+        if(strcmp(v[m].p, k) == 0) {
+            printf("Tratta: %s %s %s %s %s %s %d\n", v[m].cod_t, v[m].p, v[m].a, v[m].data, v[m].ora_p, v[m].ora_a, v[m].ritardo);
+            break;
+        }
+        if(strcmp(v[m].p, k) < 0)
+            l = m+1;
+        else
+            r = m-1;
+    }
+    if(l>r) printf("Tratta non trovata.\n");
 }
 int main() {
     setbuf(stdout, NULL);
@@ -148,6 +164,7 @@ void stampalog(Tratta v[], int nr){
 }
 void selezioneDati(command c, Tratta v[], int nr){
     switch(c){
+        char staz[10];
         case c_stampa:
             stampalog(v, nr);
             break;
@@ -164,6 +181,9 @@ void selezioneDati(command c, Tratta v[], int nr){
             stampalog(ordinamenti[3], nr);
             break;
         case r_partenza:
+            printf("Inserisci una stazione di partenza: \n");
+            scanf("%s", staz);
+            BinSearch(ordinamenti[2], 0, nr, staz);  //avendo il vettore ordinato per staz. di partenza opto per la binsearch
             break;
         default: printf("comando errato");
     }
