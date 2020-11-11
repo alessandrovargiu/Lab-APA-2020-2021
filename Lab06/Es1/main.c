@@ -56,7 +56,7 @@ int main() {
     fclose(fp);
     generaplaylist(val, n_amici);
 
-    //tutta sta merda sarebbe meglio se la facesse una funzione apposita ma oggi son particolarmente pigro
+    //tutta sta merda sarebbe meglio che la facesse una funzione apposita ma oggi son particolarmente pigro
     for(size_t i=0; i<n_amici; i++){
         for(size_t j=0; j<val[i].num_scelte; j++){
             free(val[i].scelte[j]);
