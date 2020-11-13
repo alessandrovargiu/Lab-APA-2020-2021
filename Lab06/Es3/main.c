@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdlib.h>                         //// basically è lo stesso programma del lab04 es.2  ma con tutti i vettori dinamici 
+#include <string.h>                         // e una nuova funz. di acquisizione da file
 #include <ctype.h>
 #define maxstr 30
 typedef enum command {
