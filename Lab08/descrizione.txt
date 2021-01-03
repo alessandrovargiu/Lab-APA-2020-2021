@@ -1,4 +1,4 @@
 Argomenti:
   - Ricorsione con modelli di calcolo combinatorio
   - Problemi di ottimizzazione
-  - Programmazione multi-file con strutture dati dinamiche
+  - Gestione liste, puntatori e strutture dati dinamiche
