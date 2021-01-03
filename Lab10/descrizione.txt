@@ -1,0 +1,4 @@
+Argomenti:
+  -Programmazione dinamica
+  -Ricorsione con memoization
+  -Programmazione multi-file con ADT I classe e Quasi ADT
