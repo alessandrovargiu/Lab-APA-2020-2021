@@ -1,0 +1,3 @@
+Argomenti:
+  - Ricorsione, Problemi di ottimizzazione
+  - Programmazione multifile con strutture dati dinamiche
